@@ -1,0 +1,169 @@
+package com.zeus.controller;
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.zeus.domain.Member;
+
+import lombok.val;
+import lombok.extern.java.Log;
+
+@Log
+@Controller
+public class MemberController {
+
+	@RequestMapping(value = "/registerForm", method = RequestMethod.GET)
+	public String registerForm() {
+		log.info("registerForm");
+		
+		return "registerForm";
+	}
+	
+	/*
+	 * @RequestMapping(value = "/register", method = RequestMethod.GET) public
+	 * String registerByParameter(String userId, String password) {
+	 * log.info("registerByParameter"); log.info("userId = " + userId);
+	 * log.info("password = " + password);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
+	 * public String registerByPath(String userId) { log.info("registerByPath");
+	 * log.info("userId = " + userId);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register01", method = RequestMethod.POST) public
+	 * String register01(String userId) {
+	 * log.info("HTML 폼 필드명과 컨트롤러 매개변수명이 일치 register01"); log.info("userId = " +
+	 * userId);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register02", method = RequestMethod.POST) public
+	 * String register02(String userId, String password) {
+	 * log.info("HTML 폼 필드가 여러 개일 경우 register02"); log.info("userId = " + userId);
+	 * log.info("password = " + password);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register03", method = RequestMethod.POST) public
+	 * String register03(String password, String userId) {
+	 * log.info("컨트롤러 매개변수의 위치 register03"); log.info("userId = " + userId);
+	 * log.info("password = " + password);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register04", method = RequestMethod.POST) public
+	 * String register04(String userId, String password, String coin) {
+	 * log.info("HTML 폼 필드값이 숫자일 경우 register04"); log.info("userId = " + userId);
+	 * log.info("password = " + password); log.info("coin = " + coin);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register05", method = RequestMethod.POST) public
+	 * String register05(String userId, String password, int coin) {
+	 * log.info("숫자형이면 숫자로 타입 변환 register05"); log.info("userId = " + userId);
+	 * log.info("password = " + password); log.info("coin = " + coin);
+	 * 
+	 * return "success"; }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
+	 * public String registerByPath(@PathVariable("userId") String userId) {
+	 * log.info("registerByPath : /register/{userId}"); log.info("userId = " +
+	 * userId);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register/{userId}/{coin}", method =
+	 * RequestMethod.GET) public String registerByPath(@PathVariable("userId")
+	 * String userId, @PathVariable("coin") int coin) {
+	 * log.info("registerByPath : /register/{userId}/{coin}"); log.info("userId = "
+	 * + userId); log.info("coin = " + coin);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register01", method = RequestMethod.POST) public
+	 * String register01(String userId) { log.info("register01 : userId");
+	 * log.info("userId = " + userId);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/register02", method = RequestMethod.POST) public
+	 * String register02(@RequestParam("userId") String username) {
+	 * log.info("register02 : @RequestParam"); log.info("userId = " + username);
+	 * 
+	 * return "success"; }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/registerbeans01", method = RequestMethod.POST)
+	 * public String registerbeans01(Member member) { log.info("registerBeans");
+	 * log.info("member.getUserId() = " + member.getUserId());
+	 * log.info("member.getPassword() = " + member.getPassword());
+	 * log.info("member.getCoin() = " + member.getCoin());
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/registerbeans02", method = RequestMethod.POST)
+	 * public String registerbeans02(Member member, int coin) {
+	 * log.info("registerBeans"); log.info("member.getUserId() = " +
+	 * member.getUserId()); log.info("member.getPassword() = " +
+	 * member.getPassword()); log.info("member.getCoin() = " + member.getCoin());
+	 * log.info("coin = " + coin);
+	 * 
+	 * return "success"; }
+	 */
+	
+	/*
+	 * @RequestMapping(value = "/registerByDate01", method = RequestMethod.GET)
+	 * public String registerByDate01(String userId, Date dateOfBirth) {
+	 * log.info("registerByDate01"); log.info("userId = " + userId);
+	 * log.info("dateOfBirth = " + dateOfBirth);
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/registerByDate02", method = RequestMethod.GET)
+	 * public String registerByDate02(Member member) { log.info("registerByDate02");
+	 * log.info("member.getUserId() = " + member.getUserId());
+	 * log.info("member.getDateOfBirth() = " + member.getDateOfBirth());
+	 * 
+	 * return "success"; }
+	 * 
+	 * @RequestMapping(value = "/registerdate", method = RequestMethod.POST) public
+	 * String registerdate(Member member) { log.info("registerByDate");
+	 * log.info("member.getUserId() = " + member.getUserId());
+	 * log.info("member.getPassword() = " + member.getPassword());
+	 * log.info("member.getDateOfBirth() = " + member.getDateOfBirth());
+	 * 
+	 * return "success"; }
+	 */
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(Member member) {
+		log.info("register");
+		log.info("member.getUserId() = " + member.getUserId());
+		log.info("member.getPassword() = " + member.getPassword());
+		log.info("member.getDateOfBirth() = " + member.getDateOfBirth());
+		
+		return "success";
+	}
+	
+	@RequestMapping(value = "/registerByDateFormat", method = RequestMethod.GET)
+	public String registerByDateFormat(String userId, @DateTimeFormat(pattern = "yyyyMMdd") Date dateOfBirth) {
+		log.info("registerByDateFormat");
+		log.info("userId() = " + userId);
+		log.info("dateOfBirth = " + dateOfBirth);
+		
+		return "success";
+		
+	}
+}
