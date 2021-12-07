@@ -3,7 +3,9 @@ package com.zeus.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.plaf.basic.BasicDesktopIconUI;
 
@@ -23,8 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.zeus.domain.Address;
 import com.zeus.domain.Card;
+import com.zeus.domain.CodeLabelValue;
 import com.zeus.domain.FileMember;
 import com.zeus.domain.Member;
 import com.zeus.domain.MultiFileMember;
@@ -49,7 +53,7 @@ public class MemberController {
 	 * 
 	 * return "registerForm"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/register", method = RequestMethod.GET) public
 	 * String registerByParameter(String userId, String password) {
@@ -99,7 +103,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/register/{userId}", method = RequestMethod.GET)
 	 * public String registerByPath(@PathVariable("userId") String userId) {
@@ -128,7 +132,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/registerbeans01", method = RequestMethod.POST)
 	 * public String registerbeans01(Member member) { log.info("registerBeans");
@@ -147,7 +151,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/registerByDate01", method = RequestMethod.GET)
 	 * public String registerByDate01(String userId, Date dateOfBirth) {
@@ -171,7 +175,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
 	 * String register(Member member) { log.info("register");
@@ -212,7 +216,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/registerMemberUserId", method = RequestMethod.POST)
 	 * public String registerUserId(Member member) { log.info("registerUserId");
@@ -410,7 +414,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @RequestMapping(value = "/registerFileUpForm", method = RequestMethod.GET)
 	 * public String registerFileUpForm() { log.info("registerFileUpForm");
@@ -519,7 +523,7 @@ public class MemberController {
 	 * 
 	 * return "success"; }
 	 */
-	
+
 	/*
 	 * @GetMapping(value = "/register01/{userId}") public ResponseEntity<String>
 	 * register01(@PathVariable("userId") String userId){ log.info("regiser01");
@@ -619,7 +623,7 @@ public class MemberController {
 	 * 
 	 * return entity; }
 	 */
-	
+
 	/*
 	 * @PostMapping(value = "/uploadAjax", produces = "text/plain; charset=UTF-8")
 	 * public ResponseEntity<String> uploadAjax(MultipartFile file) throws
@@ -632,7 +636,7 @@ public class MemberController {
 	 * 
 	 * return entity; }
 	 */
-	
+
 	/*
 	 * @GetMapping(value = "/model01") public String model01(Model model) {
 	 * log.info("model01");
@@ -793,7 +797,7 @@ public class MemberController {
 	 * 
 	 * return "model05"; }
 	 */
-	
+
 	/*
 	 * @GetMapping(value = "/registerModelForm") public String registerModelForm() {
 	 * log.info("registerModelForm");
@@ -832,27 +836,378 @@ public class MemberController {
 	 * 
 	 * return "registerModelForm04"; }
 	 */
-	
-	@GetMapping(value = "/registerRedirectAttributesForm")
-	public String registerRedirectAttributesForm() {
-		log.info("registerRedirectAttributesForm");
-		
-		return "registerRedirectAttributesForm";
-	}
-	
-	@PostMapping(value = "/registerRedirectAttributes")
-	public String registerRedirectAttributes(Member member, RedirectAttributes rttr) throws Exception {
-		log.info("registerRedirectAttributes");
-		
-		rttr.addFlashAttribute("msg", "success");
-		
-		return "redirect:/result";
-	}
-	
-	@GetMapping(value = "/result")
-	public String result() {
-		log.info("result");
-		
-		return "result";
+
+	/*
+	 * @GetMapping(value = "/registerRedirectAttributesForm") public String
+	 * registerRedirectAttributesForm() {
+	 * log.info("registerRedirectAttributesForm");
+	 * 
+	 * return "registerRedirectAttributesForm"; }
+	 * 
+	 * @PostMapping(value = "/registerRedirectAttributes") public String
+	 * registerRedirectAttributes(Member member, RedirectAttributes rttr) throws
+	 * Exception { log.info("registerRedirectAttributes");
+	 * 
+	 * rttr.addFlashAttribute("msg", "success");
+	 * 
+	 * return "redirect:/result"; }
+	 * 
+	 * @GetMapping(value = "/result") public String result() { log.info("result");
+	 * 
+	 * return "result"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringForm01", method = RequestMethod.GET)
+	 * public String registerSpringForm01() { log.info("registerSpringForm01");
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm02", method = RequestMethod.GET)
+	 * // 화면에 전달할 데이터를 위해 Model을 매개변수로 지정한다. public String
+	 * registerSpringForm02(Model model) { log.info("registerSpringForm02");
+	 * 
+	 * // 속성명에 "member"를 지정하고 폼 객체를 모델에 추가한다. model.addAttribute("member", new
+	 * Member());
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm03", method = RequestMethod.GET)
+	 * public String registerSpringForm03(Model model) {
+	 * log.info("registerSpringForm03");
+	 * 
+	 * // 속성명에 "user"를 지정하고 폼 객체를 모델에 추가한다. model.addAttribute("user", new
+	 * Member());
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm04", method = RequestMethod.GET)
+	 * public String registerSpringForm04(Model model) {
+	 * log.info("registerSpringForm04");
+	 * 
+	 * // 속성명에 "user"를 지정하고 폼 객체를 모델에 추가한다. model.addAttribute("user", new
+	 * Member());
+	 * 
+	 * return "registerSpringForm2"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm05", method = RequestMethod.GET)
+	 * // 컨트롤러는 기본적으로 자바빈즈 규칙에 맞는 객체는 다시 화면으로 폼 객체를 전달한다. public String
+	 * registerSpringForm05(Member member) { log.info("registerSpringForm05");
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm06", method = RequestMethod.GET)
+	 * // 폼 객체의 속성명은 매개변수롤 전달된 자바빈즈 클래스의 타입며을 이용하여 만든다. public String
+	 * registerSpringForm06(Member user) { log.info("registerSpringForm06");
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm07", method = RequestMethod.GET)
+	 * // @ModelAttribute 애너테이션으로 폼 객체의 속성명을 "user"로 지정한다. public String
+	 * registerSpringForm07(@ModelAttribute("user") Member member) {
+	 * log.info("registerSpringForm07");
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm08", method = RequestMethod.GET)
+	 * // @ModelAttribute 애너테이션으로 폼 객체의 속성명을 "user"로 지정한다. public String
+	 * registerSpringForm08(@ModelAttribute("user") Member member) {
+	 * log.info("registerSpringForm08");
+	 * 
+	 * return "registerSpringForm2"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringForm09", method = RequestMethod.GET)
+	 * public String registerSpringForm09(Model model) {
+	 * log.info("registerSpringForm09");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * // 폼 객체의 프로퍼티에 값을 지정한다. member.setUserId("hong"); member.setUserName("홍길동");
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringForm"; }
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member) { log.info("register");
+	 * 
+	 * log.info("member.getUserId() = " + member.getUserId());
+	 * log.info("member.getUserName() = " + member.getUserName());
+	 * 
+	 * return "resultForm"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormInput01", method =
+	 * RequestMethod.GET) public String registerSpringFormInput01(Model model) {
+	 * log.info("registerSpringFormInput01");
+	 * 
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormInput"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormInput02", method =
+	 * RequestMethod.GET) public String registerSpringFormInput02(Model model) {
+	 * log.info("registerSpringFormInput02");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * member.setEmail("aaa@ccc.com"); member.setUserName("홍길동");
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringFormInput"; }
+	 * 
+	 * // 입력처리
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member) { log.info("register");
+	 * 
+	 * log.info("member.getUserId() = " + member.getUserId());
+	 * log.info("member.getUserName() = " + member.getUserName());
+	 * log.info("member.getEmail() = " + member.getEmail());
+	 * 
+	 * return "inputResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormPassword01", method =
+	 * RequestMethod.GET) public String registerSpringFormPassword01(Model model) {
+	 * log.info("registerForm01");
+	 * 
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormPassword"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormPassword02", method =
+	 * RequestMethod.GET) public String registerSpringFormPassword02(Model model) {
+	 * log.info("registerForm02");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * member.setPassword("1234"); model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringFormPassword"; }
+	 * 
+	 * // 입력 처리
+	 * 
+	 * @RequestMapping(value = "register", method = RequestMethod.POST) public
+	 * String register(Member member) { log.info("register");
+	 * 
+	 * log.info("member.getPassword() = " + member.getPassword());
+	 * 
+	 * return "passwordResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormTextarea01", method =
+	 * RequestMethod.GET) public String registerSpringFormTextarea01(Model model) {
+	 * log.info("registerSpringFormTextarea01");
+	 * 
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormTextarea"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormTextarea02", method =
+	 * RequestMethod.GET) public String registerSpringFormTextarea02(Model model) {
+	 * log.info("registerSpringFormTextarea02");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * String introduction = "안녕하세요. \n반갑습니다.";
+	 * 
+	 * member.setIntroduction(introduction);
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringFormTextarea"; }
+	 * 
+	 * // 입력 처리
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member) { log.info("register");
+	 * 
+	 * log.info("member.getIntroduction() = " + member.getIntroduction());
+	 * 
+	 * return "textareaResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormCheckboxes01", method =
+	 * RequestMethod.GET) public String registerSpringFormCheckboxes01(Model model)
+	 * { log.info("registerSpringFormCheckboxes01");
+	 * 
+	 * Map<String, String> hobbyMap = new HashMap<String, String>();
+	 * hobbyMap.put("01", "Sports"); hobbyMap.put("02", "Music"); hobbyMap.put("03",
+	 * "Movie");
+	 * 
+	 * model.addAttribute("hobbyMap", hobbyMap); model.addAttribute("member", new
+	 * Member());
+	 * 
+	 * return "registerSpringFormCheckboxes01"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormCheckboxes02", method =
+	 * RequestMethod.GET) public String registerSpringFormCheckboxes02(Model model)
+	 * { log.info("registerSpringFormCheckboxes02");
+	 * 
+	 * List<CodeLabelValue> hobbyCodeList = new ArrayList<CodeLabelValue>();
+	 * hobbyCodeList.add(new CodeLabelValue("01", "Sports")); hobbyCodeList.add(new
+	 * CodeLabelValue("02", "Music")); hobbyCodeList.add(new CodeLabelValue("03",
+	 * "Movie"));
+	 * 
+	 * model.addAttribute("hobbyCodeList", hobbyCodeList);
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormCheckboxes02"; }
+	 * 
+	 * // 입력 처리
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member, Model model) { log.info("register");
+	 * 
+	 * List<String> hobbyList = member.getHobbyList();
+	 * 
+	 * if(hobbyList != null) { log.info("hobbyList != null = " + hobbyList.size());
+	 * 
+	 * for(int i = 0; i< hobbyList.size(); i++) { log.info("hobbyList(" + i + ") = "
+	 * + hobbyList.get(i)); } } else { log.info("hobbyList == null"); }
+	 * 
+	 * model.addAttribute("hobbyList", hobbyList);
+	 * 
+	 * return "checkboxesResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormCheckbox01", method =
+	 * RequestMethod.GET) public String registerSpringFormCheckbox01(Model model) {
+	 * log.info("registerSpringFormCheckbox01");
+	 * 
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormCheckbox"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormCheckbox02", method =
+	 * RequestMethod.GET) public String registerSpringFormCheckbox02(Model model) {
+	 * log.info("registerSpringFormCheckbox02");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * member.setDeveloper("Y"); member.setForeigner(true);
+	 * member.setHobby("Movie");
+	 * 
+	 * String[] hobbyArray = {"Music", "Movie"};
+	 * 
+	 * member.setHobbyArray(hobbyArray);
+	 * 
+	 * List<String> hobbyList = new ArrayList<String>(); hobbyList.add("Music");
+	 * hobbyList.add("Movie");
+	 * 
+	 * member.setHobbyList(hobbyList);
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringFormCheckbox"; }
+	 * 
+	 * // 입력 처리
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member, Model model) { log.info("register");
+	 * 
+	 * log.info("member.isForeigner = " + member.isForeigner());
+	 * log.info("member.getDeveloper = " + member.getDeveloper());
+	 * log.info("member.getHobby = " + member.getHobby());
+	 * 
+	 * String[] hobbyArray = member.getHobbyArray();
+	 * 
+	 * if(hobbyArray != null) { log.info("hobbyArray != null = " +
+	 * hobbyArray.length);
+	 * 
+	 * for(int i = 0; i < hobbyArray.length; i++) { log.info("hobbyArray[" + i +
+	 * "] = " + hobbyArray[i]); } } else { log.info("hobbyArray == null"); }
+	 * 
+	 * List<String> hobbyList = member.getHobbyList();
+	 * 
+	 * if(hobbyList != null) { log.info("hobbyList != null = " + hobbyList.size());
+	 * 
+	 * for(int i = 0; i < hobbyList.size(); i++) { log.info("hobbyList[" + i +
+	 * "] = " + hobbyList.get(i)); } } else { log.info("hobbyList == null"); }
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "checkboxResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormRadiobuttons01", method =
+	 * RequestMethod.GET) public String registerSpringFormRadiobuttons01(Model
+	 * model) { log.info("registerSpringFormRadiobuttons01");
+	 * 
+	 * Map<String, String> genderCodeMap = new HashMap<String, String>();
+	 * genderCodeMap.put("01", "Male"); genderCodeMap.put("02", "Female");
+	 * genderCodeMap.put("03", "Other");
+	 * 
+	 * model.addAttribute("genderCodeMap", genderCodeMap);
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormRadiobuttons01"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormRadiobuttons02", method =
+	 * RequestMethod.GET) public String registerSpringFormRadiobuttons02(Model
+	 * model) { log.info("registerSpringFormRadiobuttons02");
+	 * 
+	 * List<CodeLabelValue> genderCodeList = new ArrayList<CodeLabelValue>();
+	 * genderCodeList.add(new CodeLabelValue("01", "Male")); genderCodeList.add(new
+	 * CodeLabelValue("02", "Female")); genderCodeList.add(new CodeLabelValue("03",
+	 * "Other"));
+	 * 
+	 * model.addAttribute("genderCodeList", genderCodeList);
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormRadiobuttons02"; }
+	 * 
+	 * // 입력 처리
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member, Model model) { log.info("register");
+	 * 
+	 * log.info("member.getGender() = " + member.getGender());
+	 * 
+	 * model.addAttribute("gender", member.getGender());
+	 * 
+	 * return "radiobuttonsResult"; }
+	 */
+
+	/*
+	 * @RequestMapping(value = "/registerSpringFormRadiobutton01", method =
+	 * RequestMethod.GET) public String registerSpringFormRadiobutton01(Model model)
+	 * { log.info("registerSpringFormRadiobutton01");
+	 * 
+	 * model.addAttribute("member", new Member());
+	 * 
+	 * return "registerSpringFormRadiobutton"; }
+	 * 
+	 * @RequestMapping(value = "/registerSpringFormRadiobutton02", method =
+	 * RequestMethod.GET) public String registerSpringFormRadiobutton02(Model model)
+	 * { log.info("registerSpringFormRadiobutton02");
+	 * 
+	 * Member member = new Member();
+	 * 
+	 * member.setGender("female"); model.addAttribute("member", member);
+	 * 
+	 * return "registerSpringFormRadiobutton"; }
+	 * 
+	 * @RequestMapping(value = "/register", method = RequestMethod.POST) public
+	 * String register(Member member, Model model) { log.info("register");
+	 * 
+	 * log.info("member.getGender() = " + member.getGender());
+	 * 
+	 * model.addAttribute("member", member);
+	 * 
+	 * return "radiobuttonResult"; }
+	 */
+
+	@RequestMapping(value = "/registerSpringFormSelect01", method = RequestMethod.GET)
+	public String registerSpringFormSelect01(Model model) {
+		log.info("registerSpringFormSelect01");
 	}
 }
