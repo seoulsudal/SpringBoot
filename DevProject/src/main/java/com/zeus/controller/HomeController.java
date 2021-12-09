@@ -10,6 +10,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,8 @@ import com.zeus.domain.Member;
 import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
-//@Log
-@Slf4j
+@Log
+//@Slf4j
 @Controller
 public class HomeController {
 
@@ -174,6 +176,9 @@ public class HomeController {
 	 * return "registerAjaxFileUpForm"; }
 	 */
 	
+	@Autowired
+	private MessageSource messageSource;
+	
 	@GetMapping(value = "/")
 	public String home(Locale locale, Model model) {
 		log.info("환영 합니다. 클라이언트 지역은 " + locale + "입니다.");
@@ -184,6 +189,19 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate);
+		
+		return "home";
+	}
+	
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome() {
+		// 미리 정의된 메시지에 값을 넘겨준다.
+		String[] args = {"이순신"};
+		
+		// 스프링 프레임워크로부터 MessageSource를 주입 받은 다음 getMessage 메서드를 호출한다.
+		String message = messageSource.getMessage("welcome.message", args, Locale.KOREAN);
+		
+		log.info("Welcome message : " + message);
 		
 		return "home";
 	}

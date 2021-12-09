@@ -11,3 +11,5 @@ C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\js
 \DevProject1234\.mvn\wrapper
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3790305392.index
 \DevProject1234\.mvn\wrapper
+C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2091526840.index
+\SpringJDBCBoard\src\main\java
