@@ -5,6 +5,8 @@ C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\js
 \DevProject\src\main\java
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1552307573.index
 \DevProject1234\.mvn\wrapper
+C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2791389468.index
+\SpringJPABoard\.mvn\wrapper
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2881919921.index
 \DevProject\src\main\java
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1059352340.index

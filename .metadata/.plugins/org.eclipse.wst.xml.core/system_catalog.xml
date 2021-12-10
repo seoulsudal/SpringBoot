@@ -200,4 +200,5 @@
   <uri name="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200802" uri="jar:file:/C:/SpringBootWebProject/sts-4.12.1.RELEASE/plugins/org.eclipse.wst.standard.schemas_1.0.800.v201901071922.jar!/xsd/ws-securitypolicy.xsd"/>
   <uri name="http://www.w3.org/TR/xmldsig-core/xmldsig-core-schema.xsd" uri="jar:file:/C:/SpringBootWebProject/sts-4.12.1.RELEASE/plugins/org.eclipse.wst.standard.schemas_1.0.800.v201901071922.jar!/xsd/xmldsig-core-schema.xsd"/>
   <uri id="org.w3c.xinclude" name="http://www.w3.org/2001/XInclude" uri="jar:file:/C:/SpringBootWebProject/sts-4.12.1.RELEASE/plugins/org.eclipse.wst.xsl.core_1.2.100.v201907231732.jar!/xslt-schemas/xinclude.xsd"/>
+  <public publicId="-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" uri="jar:file:/C:/SpringBootWebProject/sts-4.12.1.RELEASE/plugins/org.mybatis.generator.eclipse.ui_1.4.0.201911242214.jar!/dtds/mybatis-generator-config_1_0.dtd"/>
 </catalog>
