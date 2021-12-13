@@ -2,38 +2,46 @@ package com.zeus.service;
 
 import java.util.List;
 
-import com.zeus.domain.Board;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.zeus.domain.Board;
+import com.zeus.mapper.BoardMapper;
+
+@Service
 public class BoardServiceImpl implements BoardService {
 
+	@Autowired
+	private BoardMapper mapper;
+	
 	@Override
 	public void register(Board board) throws Exception {
-		// TODO Auto-generated method stub
-
+		mapper.create(board);
 	}
 
 	@Override
 	public Board read(Integer boardNo) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.read(boardNo);
 	}
 
 	@Override
 	public void modify(Board board) throws Exception {
-		// TODO Auto-generated method stub
-
+		mapper.update(board);
 	}
 
 	@Override
 	public void remove(Integer boardNo) throws Exception {
-		// TODO Auto-generated method stub
-
+		mapper.delete(boardNo);
 	}
 
 	@Override
 	public List<Board> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return mapper.list();
+	}
+
+	@Override
+	public List<Board> search(String title) throws Exception {
+		return mapper.search(title);
 	}
 
 }
