@@ -25,4 +25,28 @@
 		<put-attribute name="title" value="CodeDetail"/>
 		<put-attribute name="content" value="/WEB-INF/views/codedetail/{1}.jsp"/>
 	</definition>
+	
+	<!-- 회원 관리 페이지에 대한 레이아웃 템플릿 구성요소를 정의한다. -->
+	<definition name="user/*" extends="main-template">
+		<put-attribute name="title" value="User"/>
+		<put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp"/>
+	</definition>
+	
+	<!-- 로그인 페이지에 대한 레이아웃 템플릿을 정의한다. -->
+	<definition name="common-template" template="/WEB-INF/tiles/layouts/common_template.jsp">
+		<put-attribute name="title" value="Common"/>
+		<put-attribute name="header" value="/WEB-INF/tiles/components/header.jsp"/>
+	</definition>
+	
+	<!-- 로그인 페이지에 대한 레이아웃 템플릿 구성 요소를 정의한다. -->
+	<definition name="auth/*" extends="common-template">
+		<put-attribute name="title" value="Login"/>
+		<put-attribute name="content" value="/WEB-INF/views/auth/{1}.jsp"/>
+	</definition>
+	
+	<!-- 회원 게시판 페이지에 대한 레이아웃 템플릿 구성 요소를 정의한다. -->
+	<definition name="board/*" extends="main-template">
+		<put-attribute name="title" value="Board"/>
+		<put-attribute name="content" value="/WEB-INF/views/board/{1}.jsp"/>
+	</definition>
 </tiles-definitions>
