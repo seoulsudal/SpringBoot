@@ -8,6 +8,12 @@
 <h2><spring:message code="board.header.read"/></h2>
 <form:form modelAttribute="board">
 	<form:hidden path="boardNo"/>
+	<!-- 현재 페이지 번호와 페이징 크기를 숨겨진 필드 요소를 사용하여 전달한다. -->
+	<input type="hidden" name="page" value="${pgrq.page}">
+	<input type="hidden" name="sizePerPage" value="${pgrq.sizePerPage}">
+	<input type="hidden" name="searchType" value="${pgrq.searchType}">
+	<input type="hidden" name="keyword" value="${pgrq.keyword}">
+	
 	<table>
 		<tr>
 			<td><spring:message code="board.title"/></td>
@@ -48,6 +54,12 @@
 <script>
 	$(document).ready(function() {
 		var formObj = $("#board");
+		
+		// 현재 페이지 번호와 페이징 크기
+		var pageObj = $("#page");
+		var sizePerPageObj = $("#sizePerPage");
+		var pageVal = pageObj.val();
+		var sizePerPageVal = sizePerPageObj.val();
 		
 		$("#btnEdit").on("click", function() {
 			var boardNo = $("#boardNo");
