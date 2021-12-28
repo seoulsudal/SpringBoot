@@ -33,6 +33,8 @@ C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\js
 \ImageShop\src\main\java
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3392249105.index
 \SpringMyBatisProject\src\main\java
+C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1268123234.index
+\ImageShop\src\main\java
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\14387125.index
 \DevProject\src\main\java
 C:\SpringBootWebProject\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2881919921.index

@@ -5,4 +5,4 @@
 <div>
 	<h2>${msg}</h2>
 	<a href="list"><spring:message code="action.list"/></a>
-</div>
+</div>m
