@@ -95,7 +95,7 @@ public class ItemController {
 	public String read(Integer itemId, Model model) throws Exception {
 		Item item = itemService.read(itemId);
 		
-		model.addAttribute("item", item);
+		model.addAttribute(item);
 		
 		return "item/read";
 	}
